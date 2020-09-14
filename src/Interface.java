@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * @author Cliente
  */
 public class Interface extends javax.swing.JFrame {
-    ArrayList<Senha> lista = new ArrayList();
+    ArrayList<Senha> fila = new ArrayList();
     /**
      * Creates new form Interface
      */
@@ -39,9 +39,11 @@ public class Interface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         senhaTela.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        senhaTela.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         senhaTela.setText("Senha");
 
         caixaTela.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        caixaTela.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         caixaTela.setText("Caixa");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Para Clientes"));
@@ -117,12 +119,32 @@ public class Interface extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Para caixas"));
 
         caixa1.setText("Caixa 1");
+        caixa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caixa1ActionPerformed(evt);
+            }
+        });
 
         caixa3.setText("Caixa 3");
+        caixa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caixa3ActionPerformed(evt);
+            }
+        });
 
         caixa2.setText("Caixa 2");
+        caixa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caixa2ActionPerformed(evt);
+            }
+        });
 
         caixa4.setText("Caixa 4");
+        caixa4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caixa4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,23 +217,123 @@ public class Interface extends javax.swing.JFrame {
     private void atComumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atComumActionPerformed
         Senha senha = new Senha();
         senha.criarSenha('C');
-        lista.add(senha);
+        fila.add(senha);
         senhaCliente.setText(senha.retornarSenha());
     }//GEN-LAST:event_atComumActionPerformed
 
     private void atRapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atRapidoActionPerformed
         Senha senha = new Senha();
         senha.criarSenha('R');
-        lista.add(senha);
+        fila.add(senha);
         senhaCliente.setText(senha.retornarSenha());
     }//GEN-LAST:event_atRapidoActionPerformed
 
     private void atPreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atPreferencialActionPerformed
         Senha senha = new Senha();
         senha.criarSenha('P');
-        lista.add(senha);
+        fila.add(senha);
         senhaCliente.setText(senha.retornarSenha());
     }//GEN-LAST:event_atPreferencialActionPerformed
+
+    private void caixa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa1ActionPerformed
+        boolean temP = false;
+        Senha copiaSenha = null;
+        if (fila.isEmpty()){
+            senhaTela.setText("Não há clientes no momento");
+        } else{
+            for (Senha senha : fila) {
+                if (senha.getTipoSenha() == 'P'){
+                    copiaSenha = senha;
+                    temP = true;
+                    break;
+                }
+            }
+            if (temP == false){
+                senhaTela.setText(fila.get(0).retornarSenha());
+                caixaTela.setText("Caixa 1");
+                fila.remove(fila.get(0));
+            } else{
+                    senhaTela.setText(copiaSenha.retornarSenha());
+                    caixaTela.setText("Caixa 1");
+                    fila.remove(copiaSenha);
+            }     
+        }
+    }//GEN-LAST:event_caixa1ActionPerformed
+
+    private void caixa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa2ActionPerformed
+        boolean temR = false;
+        Senha copiaSenha = null;
+        if (fila.isEmpty()){
+            senhaTela.setText("Não há clientes no momento");
+        } else{
+            for (Senha senha : fila) {
+                if (senha.getTipoSenha() == 'R'){
+                    copiaSenha = senha;
+                    temR = true;
+                    break;
+                }
+            }
+            if (temR == false){
+                senhaTela.setText(fila.get(0).retornarSenha());
+                caixaTela.setText("Caixa 2");
+                fila.remove(fila.get(0));
+            } else{
+                    senhaTela.setText(copiaSenha.retornarSenha());
+                    caixaTela.setText("Caixa 2");
+                    fila.remove(copiaSenha);
+            }     
+        }
+    }//GEN-LAST:event_caixa2ActionPerformed
+
+    private void caixa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa3ActionPerformed
+        boolean temR = false;
+        Senha copiaSenha = null;
+        if (fila.isEmpty()){
+            senhaTela.setText("Não há clientes no momento");
+        } else{
+            for (Senha senha : fila) {
+                if (senha.getTipoSenha() == 'R'){
+                    copiaSenha = senha;
+                    temR = true;
+                    break;
+                }
+            }
+            if (temR == false){
+                senhaTela.setText(fila.get(0).retornarSenha());
+                caixaTela.setText("Caixa 3");
+                fila.remove(fila.get(0));
+            } else{
+                    senhaTela.setText(copiaSenha.retornarSenha());
+                    caixaTela.setText("Caixa 3");
+                    fila.remove(copiaSenha);
+            }     
+        }
+    }//GEN-LAST:event_caixa3ActionPerformed
+
+    private void caixa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa4ActionPerformed
+        boolean temC = false;
+        Senha copiaSenha = null;
+        if (fila.isEmpty()){
+            senhaTela.setText("Não há clientes no momento");
+        } else{
+            for (Senha senha : fila) {
+                if (senha.getTipoSenha() == 'C'){
+                    copiaSenha = senha;
+                    temC = true;
+                    break;
+                }
+            }
+            if (temC == false){
+                senhaTela.setText(fila.get(0).retornarSenha());
+                caixaTela.setText("Caixa 4");
+                fila.remove(fila.get(0));
+            } else{
+                    senhaTela.setText(copiaSenha.retornarSenha());
+                    caixaTela.setText("Caixa 4");
+                    fila.remove(copiaSenha);
+            }     
+        }
+    }//GEN-LAST:event_caixa4ActionPerformed
 
     /**
      * @param args the command line arguments
