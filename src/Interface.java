@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 /**
  *
- * @author Cliente
+ * @author Neimar Coelho Rech
  */
 public class Interface extends javax.swing.JFrame {
     ArrayList<Senha> fila = new ArrayList();
@@ -189,12 +189,10 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(335, 335, 335)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(354, 354, 354)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(senhaTela)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(caixaTela)))))
+                            .addComponent(caixaTela))))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -215,126 +213,61 @@ public class Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atComumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atComumActionPerformed
-        Senha senha = new Senha();
-        senha.criarSenha('C');
-        fila.add(senha);
-        senhaCliente.setText(senha.retornarSenha());
+        metodoSenhas('C');
     }//GEN-LAST:event_atComumActionPerformed
 
     private void atRapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atRapidoActionPerformed
-        Senha senha = new Senha();
-        senha.criarSenha('R');
-        fila.add(senha);
-        senhaCliente.setText(senha.retornarSenha());
+        metodoSenhas('R');
     }//GEN-LAST:event_atRapidoActionPerformed
 
     private void atPreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atPreferencialActionPerformed
-        Senha senha = new Senha();
-        senha.criarSenha('P');
-        fila.add(senha);
-        senhaCliente.setText(senha.retornarSenha());
+        metodoSenhas('P');
     }//GEN-LAST:event_atPreferencialActionPerformed
 
     private void caixa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa1ActionPerformed
-        boolean temP = false;
-        Senha copiaSenha = null;
-        if (fila.isEmpty()){
-            senhaTela.setText("Não há clientes no momento");
-        } else{
-            for (Senha senha : fila) {
-                if (senha.getTipoSenha() == 'P'){
-                    copiaSenha = senha;
-                    temP = true;
-                    break;
-                }
-            }
-            if (temP == false){
-                senhaTela.setText(fila.get(0).retornarSenha());
-                caixaTela.setText("Caixa 1");
-                fila.remove(fila.get(0));
-            } else{
-                    senhaTela.setText(copiaSenha.retornarSenha());
-                    caixaTela.setText("Caixa 1");
-                    fila.remove(copiaSenha);
-            }     
-        }
+        metodoCaixas(1, 'P');
     }//GEN-LAST:event_caixa1ActionPerformed
 
     private void caixa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa2ActionPerformed
-        boolean temR = false;
-        Senha copiaSenha = null;
-        if (fila.isEmpty()){
-            senhaTela.setText("Não há clientes no momento");
-        } else{
-            for (Senha senha : fila) {
-                if (senha.getTipoSenha() == 'R'){
-                    copiaSenha = senha;
-                    temR = true;
-                    break;
-                }
-            }
-            if (temR == false){
-                senhaTela.setText(fila.get(0).retornarSenha());
-                caixaTela.setText("Caixa 2");
-                fila.remove(fila.get(0));
-            } else{
-                    senhaTela.setText(copiaSenha.retornarSenha());
-                    caixaTela.setText("Caixa 2");
-                    fila.remove(copiaSenha);
-            }     
-        }
+        metodoCaixas(2, 'R');
     }//GEN-LAST:event_caixa2ActionPerformed
 
     private void caixa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa3ActionPerformed
-        boolean temR = false;
-        Senha copiaSenha = null;
-        if (fila.isEmpty()){
-            senhaTela.setText("Não há clientes no momento");
-        } else{
-            for (Senha senha : fila) {
-                if (senha.getTipoSenha() == 'R'){
-                    copiaSenha = senha;
-                    temR = true;
-                    break;
-                }
-            }
-            if (temR == false){
-                senhaTela.setText(fila.get(0).retornarSenha());
-                caixaTela.setText("Caixa 3");
-                fila.remove(fila.get(0));
-            } else{
-                    senhaTela.setText(copiaSenha.retornarSenha());
-                    caixaTela.setText("Caixa 3");
-                    fila.remove(copiaSenha);
-            }     
-        }
+        metodoCaixas(3, 'R');
     }//GEN-LAST:event_caixa3ActionPerformed
 
     private void caixa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixa4ActionPerformed
-        boolean temC = false;
+        metodoCaixas(4, 'C');
+    }//GEN-LAST:event_caixa4ActionPerformed
+    
+    private void metodoSenhas(char tipoSenha){
+        Senha senha = new Senha();
+        senha.criarSenha(tipoSenha);
+        fila.add(senha);
+        senhaCliente.setText(senha.retornarSenha());
+    }
+    
+    private void metodoCaixas(int numCaixa, char tipoSenha){
+        boolean temSenhaEspecifica = false;
         Senha copiaSenha = null;
         if (fila.isEmpty()){
-            senhaTela.setText("Não há clientes no momento");
+            senhaTela.setText("Sem clientes");
         } else{
             for (Senha senha : fila) {
-                if (senha.getTipoSenha() == 'C'){
+                if (senha.getTipoSenha() == tipoSenha){
                     copiaSenha = senha;
-                    temC = true;
+                    temSenhaEspecifica = true;
                     break;
                 }
             }
-            if (temC == false){
-                senhaTela.setText(fila.get(0).retornarSenha());
-                caixaTela.setText("Caixa 4");
-                fila.remove(fila.get(0));
-            } else{
-                    senhaTela.setText(copiaSenha.retornarSenha());
-                    caixaTela.setText("Caixa 4");
-                    fila.remove(copiaSenha);
-            }     
+            if (temSenhaEspecifica == false){
+                copiaSenha = fila.get(0);                
+            } 
+            senhaTela.setText(copiaSenha.retornarSenha());
+            caixaTela.setText("Caixa " + numCaixa);
+            fila.remove(copiaSenha);
         }
-    }//GEN-LAST:event_caixa4ActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
