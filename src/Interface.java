@@ -2,6 +2,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Neimar Coelho Rech
+ * Análise e Desenvolvimento de Sistemas
  */
 public class Interface extends javax.swing.JFrame {
     ArrayList<Senha> fila = new ArrayList();
@@ -241,6 +242,11 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_caixa4ActionPerformed
     
     private void metodoSenhas(char tipoSenha){
+        /**
+         * @param tipoSenha C, R, ou P
+         * Cria uma nova instância de Senha,
+         * e adiciona na lista
+         */
         Senha senha = new Senha();
         senha.criarSenha(tipoSenha);
         fila.add(senha);
@@ -248,6 +254,14 @@ public class Interface extends javax.swing.JFrame {
     }
     
     private void metodoCaixas(int numCaixa, char tipoSenha){
+        /**
+         * @param numCaixa 1, 2, 3 ou 4
+         * @param tipoSenha C, R, ou P
+         * Primeiro, verifica se a lista está vazia
+         * depois, verifica se há na lista alguma senha específica
+         * como foi definida no tipoSenha,
+         * se não houver, é selecionada a primeira senha da lista
+         */
         boolean temSenhaEspecifica = false;
         Senha copiaSenha = null;
         if (fila.isEmpty()){
