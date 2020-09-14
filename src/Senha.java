@@ -3,21 +3,13 @@ public class Senha {
     private int numSenha;
     private static int i = 1;
     
-    public void  criarSenhaComum(){
-        this.tipoSenha = 'C';
+    public void  criarSenha(char tipo){
+        this.tipoSenha = tipo;
         this.numSenha = i;
         i++;
     }
     
-    public void  criarSenhaRapida(){
-        this.tipoSenha = 'R';
-        this.numSenha = i;
-        i++;
-    }
-    
-    public void  criarSenhaPreferencia(){
-        this.tipoSenha = 'P';
-        this.numSenha = i;
-        i++;
+    public String retornarSenha(){
+        return this.tipoSenha + "-" + this.numSenha;
     }
 }

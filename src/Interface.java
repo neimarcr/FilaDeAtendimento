@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import java.util.ArrayList;
 /**
  *
  * @author Cliente
  */
 public class Interface extends javax.swing.JFrame {
-
+    ArrayList<Senha> lista = new ArrayList();
     /**
      * Creates new form Interface
      */
@@ -52,14 +47,31 @@ public class Interface extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Para Clientes"));
 
         atComum.setText("Comum");
+        atComum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atComumActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Escolha seu tipo de atendimento:");
 
         atPreferencial.setText("Preferêncial");
+        atPreferencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atPreferencialActionPerformed(evt);
+            }
+        });
 
         atRapido.setText("Rápido");
+        atRapido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atRapidoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Sua senha é:");
+
+        senhaCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,6 +191,27 @@ public class Interface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atComumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atComumActionPerformed
+        Senha senha = new Senha();
+        senha.criarSenha('C');
+        lista.add(senha);
+        senhaCliente.setText(senha.retornarSenha());
+    }//GEN-LAST:event_atComumActionPerformed
+
+    private void atRapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atRapidoActionPerformed
+        Senha senha = new Senha();
+        senha.criarSenha('R');
+        lista.add(senha);
+        senhaCliente.setText(senha.retornarSenha());
+    }//GEN-LAST:event_atRapidoActionPerformed
+
+    private void atPreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atPreferencialActionPerformed
+        Senha senha = new Senha();
+        senha.criarSenha('P');
+        lista.add(senha);
+        senhaCliente.setText(senha.retornarSenha());
+    }//GEN-LAST:event_atPreferencialActionPerformed
 
     /**
      * @param args the command line arguments
